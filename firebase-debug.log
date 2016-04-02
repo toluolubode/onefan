@@ -1,0 +1,29 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      node /usr/local/bin/firebase deploy
+[debug] Platform:     darwin
+[debug] Node Version: v0.12.0
+[debug] Time:         Sun Mar 06 2016 21:46:25 GMT-0500 (EST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/firebase/torrid-inferno-5946/token?token=XXX 
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/firebase/torrid-inferno-5946/token?token=XXX 
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'torrid-inferno-5946'...
+[info] 
+[info] i  deploying hosting
+[info] i  preparing . directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/firebase/torrid-inferno-5946/uploads/-KCDxzNYoy4hJxnKUm-2?token=XXX&fileCount=342&message= 
+[error] 
+[error] Error: File upload failed: Storage error. Please try again. Failed to upload file "onefan/Icon\r": Invalid Value
+[debug] Error Context: {
+  "duration": 215,
+  "fileCount": 34,
+  "ip": "65.95.166.246",
+  "start": 1457318825949,
+  "status": "failed",
+  "statusMessage": "Storage error. Please try again. Failed to upload file \"onefan/Icon\\r\": Invalid Value",
+  "uid": "-K3C-tG4ugd9PwMTsOyv",
+  "uploadedCount": 5
+}

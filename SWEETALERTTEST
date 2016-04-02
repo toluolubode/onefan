@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+    <body onload="usernameauth()">
+    <head>
+        
+            <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+     <input type="text" id="usernameInput"  align="right"/>
+
+
+        
+<script src="/Users/jadenbanson/Dropbox/onefan/sweetalert-master/dist/sweetalert.min.js"></script> 
+<link rel="stylesheet" type="text/css" href="/Users/jadenbanson/Dropbox/onefan/sweetalert-master/dist/sweetalert.css">
+</head>
+<body>
+    <script>
+        
+function usernameauth(){
+var arr = [];
+var open;
+var usernametaken;
+usernametaken = true;
+var ref = new Firebase("https://torrid-inferno-5946.firebaseio.com/users");
+ref.once("value", function(snapshot) {
+  
+  snapshot.forEach(function(childSnapshot) {
+
+    var key = childSnapshot.key();
+
+
+    
+    var childData = childSnapshot.val();
+    arr.push(childData.username);
+    
+  });
+
+var inputheap = [];
+var username;
+
+var textInput = document.getElementById('usernameInput');
+
+// Init a timeout variable to be used below
+var timeout = null;
+
+
+textInput.onkeyup = function (e) {
+
+
+    clearTimeout(timeout);
+
+    // Make a new timeout set to go off in 800ms
+    timeout = setTimeout(function () {
+        
+      inputheap.push(textInput.value);
+      username = inputheap[inputheap.length - 1];
+      username = username.replace(/\s/g, '').toLowerCase();
+      document.getElementById("usernameInput").value = username;
+      var rawin = document.getElementById('usernameInput').value;
+     console.log(rawin)
+      var arr = [];
+var ref = new Firebase("https://torrid-inferno-5946.firebaseio.com/users");
+ref.once("value", function(snapshot) {
+  
+  snapshot.forEach(function(childSnapshot) {
+
+    var key = childSnapshot.key();
+
+
+    
+    var childData = childSnapshot.val();
+    arr.push(childData.username);
+  
+    
+  });
+
+//checkusername
+   
+        var detect = arr.indexOf(rawin);
+        
+        if(detect > -1){
+        swal({
+            title: "Username Taken..",
+            text: "Please enter a new username, old one taken:",
+            type: "input",
+            showCancelButton: false,
+            closeOnConfirm: false,
+            animation: "slide-from-top",
+            inputPlaceholder: "new username..",
+            showLoaderOnConfirm: true
+        },
+        
+        function(inputValue){
+                inputValue = inputValue.toLowerCase()
+               if (inputValue === false) return false;
+               var newdetect = arr.indexOf(inputValue) ;
+               if (inputValue === ""|| newdetect > -1) {     
+                   swal.showInputError("You need to enter a new and valid username old one taken.");     
+                   return false   
+               }
+               
+           setTimeout(function(){     sweetAlert("Success", "Valid username, not taken..", "success");;   }, 2000);
+           textInput.value = inputValue;
+         });
+        }
+});
+
+
+    }, 1000);
+};
+
+
+
+ 
+});
+
+
+
+
+}
+        </script>
+</body>
+</html>

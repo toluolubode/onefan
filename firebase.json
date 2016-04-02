@@ -1,0 +1,9 @@
+{
+  "firebase": "torrid-inferno-5946",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
